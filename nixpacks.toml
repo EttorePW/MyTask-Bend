@@ -10,4 +10,4 @@ cmds = [
 ]
 
 [phases.start]
-cmd = "java -Xmx512m -Dserver.port=$PORT -Dspring.profiles.active=default -jar target/MyTaskList-0.0.1-SNAPSHOT.jar"
+cmd = "java -Xmx1024m -Dserver.port=$PORT -Dspring.profiles.active=railway -Djava.net.preferIPv4Stack=true -Dspring.main.lazy-initialization=false -jar target/MyTaskList-0.0.1-SNAPSHOT.jar"

@@ -13,11 +13,16 @@ public class WebConfig {
         return new WebMvcConfigurer() {
             @Override
             public void addCorsMappings(CorsRegistry registry) {
-                registry.addMapping("/api/**") // o /** para todo
-                        .allowedOrigins("https://mytaskssoft.netlify.app") // tu frontend
-                        .allowedMethods("GET", "POST", "PUT", "DELETE")
+                registry.addMapping("/**") // Permitir todos los endpoints
+                        .allowedOrigins(
+                            "https://mytaskssoft.netlify.app", // tu frontend
+                            "http://localhost:3000", // desarrollo local
+                            "http://localhost:5173", // Vite dev server
+                            "*" // Temporalmente permitir todos los orígenes para debug
+                        )
+                        .allowedMethods("GET", "POST", "PUT", "DELETE", "OPTIONS")
                         .allowedHeaders("*")
-                        .allowCredentials(true);
+                        .allowCredentials(false); // Cambiar a false cuando usas "*" origins
             }
         };
     }
