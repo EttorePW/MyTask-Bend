@@ -50,10 +50,35 @@ java -Dserver.port=8082 -jar target/*.jar
 
 ## Troubleshooting:
 
-1. **Error de build**: Verificar que Java 17 esté disponible
-2. **Error de conexión DB**: Verificar string de conexión MongoDB
-3. **Error de puerto**: Railway asigna automáticamente el puerto vía variable $PORT
+### Error 502 (Bad Gateway):
+Si ves un error 502, la aplicación no está arrancando correctamente:
+
+1. **Verificar logs en Railway**:
+   - Ve al dashboard de Railway
+   - Revisa los logs del deploy y runtime
+
+2. **Configurar variables de entorno**:
+   ```
+   MONGODB_URI=mongodb+srv://usuario:password@cluster.mongodb.net/database
+   SPRING_PROFILES_ACTIVE=railway
+   ```
+
+3. **Problemas comunes y soluciones**:
+   - **Error de build**: Verificar que Java 17 esté disponible
+   - **Error de conexión MongoDB**: Verificar string de conexión y whitelist de IPs
+   - **Error de puerto**: Railway asigna automáticamente el puerto vía variable $PORT
+   - **JAR no encontrado**: Verificar que el nombre del JAR coincida en nixpacks.toml
+
+4. **Verificar health endpoint**:
+   Una vez desplegado: `https://tu-app.railway.app/actuator/health`
+
+5. **Logs útiles para debug**:
+   - Application startup logs
+   - MongoDB connection logs
+   - Port binding logs
 
 ## Endpoints después del deploy:
-- Swagger UI: `https://tu-app.railway.app/swagger-ui/index.html`
-- Health check: `https://tu-app.railway.app/actuator/health` (si tienes actuator habilitado)
+- **API Base**: `https://tu-app.railway.app/api/tasks`
+- **Swagger UI**: `https://tu-app.railway.app/swagger-ui/index.html`
+- **Health check**: `https://tu-app.railway.app/actuator/health`
+- **OpenAPI docs**: `https://tu-app.railway.app/v3/api-docs`
