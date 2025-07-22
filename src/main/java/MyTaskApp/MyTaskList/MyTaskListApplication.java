@@ -3,6 +3,9 @@ package MyTaskApp.MyTaskList;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.boot.context.event.ApplicationReadyEvent;
+import org.springframework.boot.web.server.ConfigurableWebServerFactory;
+import org.springframework.boot.web.server.WebServerFactoryCustomizer;
+import org.springframework.context.annotation.Bean;
 import org.springframework.context.event.EventListener;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Component;
@@ -44,6 +47,16 @@ public class MyTaskListApplication {
 			logger.info("Test endpoint: /test");
 			logger.info("API endpoints: /api/tasks, /api/categories");
 			logger.info("=== APPLICATION STARTUP COMPLETE ===");
+		}
+
+		@Bean
+		public WebServerFactoryCustomizer<ConfigurableWebServerFactory> webServerFactoryCustomizer() {
+			return factory -> {
+				String port = System.getenv("PORT"); // Railway te da este valor
+				if (port != null) {
+					factory.setPort(Integer.parseInt(port));
+				}
+			};
 		}
 	}
 }
