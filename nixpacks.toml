@@ -4,7 +4,10 @@ providers = ["java"]
 JAVA_VERSION = "17"
 
 [phases.build]
-cmds = ["./mvnw clean package -DskipTests=true"]
+cmds = [
+  "chmod +x mvnw",
+  "./mvnw clean package -DskipTests=true"
+]
 
 [phases.start]
 cmd = "java -Dspring.profiles.active=railway -Dserver.port=$PORT -jar target/MyTaskList-0.0.1-SNAPSHOT.jar"
