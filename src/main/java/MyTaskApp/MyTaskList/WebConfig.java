@@ -14,7 +14,7 @@ public class WebConfig {
             @Override
             public void addCorsMappings(CorsRegistry registry) {
                 registry.addMapping("/api/**") // o /** para todo
-                        .allowedOrigins("https://mytaskssoft.netlify.app/") // tu frontend
+                        .allowedOrigins("https://mytaskssoft.netlify.app") // tu frontend
                         .allowedMethods("GET", "POST", "PUT", "DELETE")
                         .allowedHeaders("*")
                         .allowCredentials(true);
