@@ -18,6 +18,7 @@ public class MyTaskListApplication {
 		logger.info("=== STARTING MYTASK APPLICATION ===");
 		logger.info("PORT environment variable: {}", System.getenv("PORT"));
 		logger.info("MONGODB_URI set: {}", System.getenv("MONGODB_URI") != null ? "YES" : "NO");
+		logger.info("Active profiles: {}", System.getProperty("spring.profiles.active", "default"));
 		
 		try {
 			SpringApplication.run(MyTaskListApplication.class, args);

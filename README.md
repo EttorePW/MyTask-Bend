@@ -1,6 +1,7 @@
 # ✅ MyTask Backend - Sistema de Gestión de Tareas
 
 API REST robusta para gestión de tareas desarrollada con Spring Boot 3.5.3. Utiliza MongoDB para persistencia de datos y está optimizada para deployment en Railway.
+- **IMPORTANTE**: Configura las variables de entorno **MONGODB_URI** y **PORT** en el panel de control de Railway.
 
 ## 🌟 Características
 
@@ -69,10 +70,10 @@ MyTask-Bend/
    cd MyTask-Bend
    ```
 
-2. **Configura MongoDB** (opcional para desarrollo):
-   ```properties
-   # En application.properties
-   spring.data.mongodb.uri=mongodb://localhost:27017/mytaskdb
+2. **Configura MongoDB para desarrollo local**:
+   Copia `.env.example` a `.env` y edita la conexión MongoDB si es necesario.
+   ```bash
+   cp .env.example .env
    ```
 
 3. **Ejecuta la aplicación**:
