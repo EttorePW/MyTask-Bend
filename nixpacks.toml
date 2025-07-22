@@ -1,5 +1,7 @@
-[providers]
-java = "17"
+providers = ["java"]
+
+[variables]
+JAVA_VERSION = "17"
 
 [phases.build]
 cmds = ["./mvnw clean package -DskipTests=true"]
