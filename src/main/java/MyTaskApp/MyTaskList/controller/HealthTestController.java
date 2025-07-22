@@ -35,9 +35,12 @@ public class HealthTestController {
         response.put("message", "Test endpoint working");
         response.put("server", "MyTask Backend");
         response.put("status", "OK");
-        response.put("port", System.getProperty("server.port", "unknown"));
+        response.put("port_property", System.getProperty("server.port", "unknown"));
+        response.put("port_env", System.getenv("PORT"));
         response.put("activeProfile", System.getProperty("spring.profiles.active", "default"));
         response.put("environment", System.getenv("RAILWAY_ENVIRONMENT_NAME"));
+        response.put("railway_service_name", System.getenv("RAILWAY_SERVICE_NAME"));
+        response.put("railway_environment", System.getenv("RAILWAY_ENVIRONMENT"));
         return ResponseEntity.ok(response);
     }
     
